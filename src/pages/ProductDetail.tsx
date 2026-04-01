@@ -1,10 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Leaf, Shield, Beaker } from "lucide-react";
+import { useState } from "react";
 import { products, categoryLabels } from "@/data/products";
+import VarietyCarousel from "@/components/VarietyCarousel";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const product = products.find((p) => p.id === id);
+  const [selectedSizeIndex, setSelectedSizeIndex] = useState(0);
 
   if (!product) {
     return (
@@ -30,15 +33,12 @@ const ProductDetail = () => {
             <ArrowLeft size={14} /> Back to Products
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            {/* Image */}
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+            {/* Image Carousel */}
+            <VarietyCarousel
+              images={product.sizeImages[product.sizes[selectedSizeIndex]] || [product.image]}
+              altText={`${product.name} - ${product.sizes[selectedSizeIndex]}`}
+            />
 
             {/* Info */}
             <div>
@@ -53,22 +53,58 @@ const ProductDetail = () => {
                 {product.description}
               </p>
 
+              {/* Important Note */}
+              {product.importantNote && (
+                <div className="bg-accent/15 border-l-4 border-accent rounded-r p-6 mb-8">
+                  <p className="font-heading text-base font-black text-accent uppercase tracking-wider mb-3">
+                    Important Note:
+                  </p>
+                  <p className="font-body text-base font-bold text-foreground leading-relaxed">
+                    {product.importantNote}
+                  </p>
+                </div>
+              )}
+
+              {/* Uses */}
+              {product.uses && (
+                <div className="bg-accent/15 border-l-4 border-accent rounded-r p-6 mb-8">
+                  <p className="font-heading text-base font-black text-accent uppercase tracking-wider mb-3">
+                    Uses:
+                  </p>
+                  <ul className="space-y-2">
+                    {product.uses.map((use) => (
+                      <p key={use} className="font-body text-base font-bold text-foreground leading-relaxed flex items-start gap-2">
+                        <span className="text-accent mt-1">•</span> {use}
+                      </p>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {/* Sizes */}
               <div className="mb-8">
                 <p className="font-body text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                   Available Sizes
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {product.sizes.map((s) => (
-                    <span
+                  {product.sizes.map((s, index) => (
+                    <button
                       key={s}
-                      className="font-body text-sm font-medium bg-secondary text-secondary-foreground px-4 py-2 rounded-md"
+                      onClick={() => setSelectedSizeIndex(index)}
+                      className={`font-body text-sm font-medium px-4 py-2 rounded-md transition-all ${
+                        selectedSizeIndex === index
+                          ? "bg-accent text-accent-foreground shadow-md"
+                          : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                      }`}
                     >
                       {s}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </div>
+
+              {/* Price for Selected Size */}
+              {/* Removed */}
 
               {/* CTA */}
               <div className="flex flex-wrap gap-4">

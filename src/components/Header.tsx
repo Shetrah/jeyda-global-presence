@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
+import jeydalogo from "@/assets/logo jeyda 2.png";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -13,15 +14,19 @@ const navItems = [
 const Header = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const isAboutPage = location.pathname === "/about";
+  const currentLogo = isAboutPage ? jeydalogo : logo;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 lg:px-12">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Jeyda logo" className="h-10 md:h-12 w-auto" />
-          <span className="hidden sm:inline-block text-[10px] font-body font-semibold uppercase tracking-[0.15em] text-muted-foreground border-l border-border pl-2 ml-1">
-            Premium Care
-          </span>
+          <img src={currentLogo} alt="Jeyda logo" className="h-10 md:h-12 w-auto transition-all" />
+          {!isAboutPage && (
+            <span className="hidden sm:inline-block text-[10px] font-body font-semibold uppercase tracking-[0.15em] text-muted-foreground border-l border-border pl-2 ml-1">
+              Premium Care
+            </span>
+          )}
         </Link>
 
         {/* Desktop nav */}

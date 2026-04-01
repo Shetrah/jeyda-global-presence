@@ -8,10 +8,13 @@ import {
   Factory,
   Beaker,
 } from "lucide-react";
-import heroImage from "@/assets/hero-products.jpg";
+import heroImage from "@/assets/hero-2.jpg";
 import manufacturingImage from "@/assets/manufacturing.jpg";
-import sustainabilityImage from "@/assets/sustainability.jpg";
+import sustainabilityImage from "@/assets/hero-products-2.jpg";
+import heroProductsImage from "@/assets/hero-products.jpg";
+import sustainabilityMainImage from "@/assets/sustainability.jpg";
 import ProductCard from "@/components/ProductCard";
+import HeroCarousel from "@/components/HeroCarousel";
 import { products } from "@/data/products";
 
 const stats = [
@@ -54,49 +57,73 @@ const values = [
   },
 ];
 
+const heroSlides = [
+  {
+    image: heroImage,
+    alt: "Jeyda premium home care products lineup",
+  },
+  {
+    image: manufacturingImage,
+    alt: "Jeyda manufacturing facility",
+  },
+  {
+    image: sustainabilityImage,
+    alt: "Sustainable eco-friendly manufacturing",
+  },
+  {
+    image: heroProductsImage,
+    alt: "Jeyda premium care products",
+  },
+  {
+    image: sustainabilityMainImage,
+    alt: "Jeyda sustainability commitment",
+  },
+];
+
 const Index = () => {
   return (
     <main>
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center">
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Jeyda premium home care products lineup"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-32">
-          <div className="max-w-2xl">
-            <p className="label-tag text-accent mb-4 animate-fade-up">
-              Premium Manufacturer & Global Exporter
+      {/* Hero Carousel */}
+      <HeroCarousel slides={heroSlides}>
+        <div className="max-w-2xl">
+          <p className="label-tag text-accent mb-4 md:mb-6 animate-fade-up text-center text-base md:text-xl font-semibold">
+            Ingenious Daily Chemicals, Cleanliness Easily Achieved
+          </p>
+          <h1 className="heading-display text-background mb-6 animate-fade-up-delay-1">
+            <span className="text-3xl md:text-6xl block mb-2">Welcome to</span>
+            <span className="text-background drop-shadow-2xl block text-4xl md:text-7xl font-black text-center" style={{textShadow: '0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.5)'}}>Jeyda Supplies Co., Ltd</span>
+            <span className="text-2xl md:text-6xl mt-3 md:mt-5 block">Thank you for reaching out!</span>
+          </h1>
+          <div className="mb-6 md:mb-8 max-w-lg animate-fade-up-delay-2">
+            <p className="text-sm md:text-body text-background/80 font-semibold mb-2 md:mb-3">
+              We are specialised in:
             </p>
-            <h1 className="heading-display text-background mb-6 animate-fade-up-delay-1">
-              Elevating Care.
-              <br />
-              Sustaining the Planet.
-            </h1>
-            <p className="text-body text-background/80 mb-8 max-w-lg animate-fade-up-delay-2">
-              Jeyda manufactures world-class home and personal care products — combining cutting-edge science with eco-conscious values for markets across the globe.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-fade-up-delay-3">
-              <Link
-                to="/products"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
-              >
-                Explore Products <ArrowRight size={16} />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 border border-background/30 text-background font-body text-sm font-semibold px-6 py-3 rounded-md hover:bg-background/10 transition-colors"
-              >
-                Partner With Us
-              </Link>
-            </div>
+            <ul className="text-sm md:text-body text-background/80 space-y-1 md:space-y-2 list-disc list-inside">
+              <li>Shower Gel</li>
+              <li>HandWash</li>
+              <li>DishWash</li>
+              <li>Laundry Detergents</li>
+              <li>Shampoo</li>
+              <li>Oil Stain Remover</li>
+              <li>Glass Cleaner</li>
+            </ul>
+          </div>
+          <div className="flex flex-wrap gap-4 animate-fade-up-delay-3">
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
+            >
+              Explore Products <ArrowRight size={16} />
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 border border-background/30 text-background font-body text-sm font-semibold px-6 py-3 rounded-md hover:bg-background/10 transition-colors"
+            >
+              Partner With Us
+            </Link>
           </div>
         </div>
-      </section>
+      </HeroCarousel>
 
       {/* Stats */}
       <section className="bg-primary">

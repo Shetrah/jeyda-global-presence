@@ -56,7 +56,7 @@ const Contact = () => {
               <div className="space-y-6">
                 {[
                   { icon: Mail, label: "Email", value: "215179755@qq.com" },
-                  { icon: Phone, label: "Phone", value: "+254729596868 / +254768177699" },
+                  { icon: Phone, label: "Phone", value: "+254729596868 / +254759898222" },
                   { icon: Globe, label: "Markets", value: "50+ Countries Worldwide" },
                   { icon: MapPin, label: "Address", value: "Wuyi Rd, Machakos, Kenya\nP.O. Box: 1234-00100" },
                 ].map((item) => (
