@@ -1,7 +1,17 @@
-import productLaundry from "@/assets/product-laundry.jpg";
 import productDish from "@/assets/product-dish.jpg";
+import productDish1L from "@/assets/product-dish - 1L.jpg";
+import productDish5L from "@/assets/product-dish-5L.jpg";
+import productDish20L from "@/assets/product-dish-20L.jpg";
 import productHandwash from "@/assets/product-handwash.jpg";
+import productHandwash500ml from "@/assets/product-handwash-500ml.jpg";
+import productHandwash5L from "@/assets/product-handwash.-5L.jpg";
+import productHandwash20L from "@/assets/product-handwash.-20L.jpg";
 import productShower from "@/assets/product-shower.jpg";
+import productShower250ml from "@/assets/product-shower-250ml.jpg";
+import productShower500ml from "@/assets/product-shower-500ml.jpg";
+import productShower5L from "@/assets/product-shower-5L.jpg";
+import productShower20L from "@/assets/product-shower-20L.jpg";
+import productLaundry from "@/assets/product-laundry.jpg";
 import productLaundry20L from "@/assets/product-laundry-20L.jpg";
 import productLaundry5L from "@/assets/product-laundry-1.5L.jpg";
 import productLaundry55L from "@/assets/product-laundry-5L.jpg";
@@ -70,9 +80,9 @@ export const products: Product[] = [
     sizes: ["500ml", "1L", "5L", "20L"],
     sizeImages: {
       "500ml": [productDish, productDish, productDish],
-      "1L": [productDish, productDish, productDish],
-      "5L": [productDish, productDish, productDish],
-      "20L": [productDish, productDish, productDish],
+      "1L": [productDish1L, productDish1L, productDish1L],
+      "5L": [productDish5L, productDish5L, productDish5L],
+      "20L": [productDish20L, productDish20L, productDish20L],
     },
     uses: [
       "Washing dishes",
@@ -102,12 +112,11 @@ export const products: Product[] = [
     tagline: "99.9% germ protection. Silky-soft feel.",
     description:
       "Enriched with moisturizing ingredients, it cleans hands while leaving them with a smooth touch, ensuring cleanliness without harming the skin. Contains disinfectant and bacteriostatic components, effectively combating 99.9% of disease-causing bacteria to protect hand hygiene. Offers a variety of fragrance options such as fruity and floral scents, and also supports custom fragrances to meet different preferences.",
-    sizes: ["500ml", "1L", "5L", "20L"],
+    sizes: ["500ml", "5L", "20L"],
     sizeImages: {
-      "500ml": [productHandwash, productHandwash, productHandwash],
-      "1L": [productHandwash, productHandwash, productHandwash],
-      "5L": [productHandwash, productHandwash, productHandwash],
-      "20L": [productHandwash, productHandwash, productHandwash],
+      "500ml": [productHandwash500ml, productHandwash500ml, productHandwash500ml],
+      "5L": [productHandwash5L, productHandwash5L, productHandwash5L],
+      "20L": [productHandwash20L, productHandwash20L, productHandwash20L],
     },
     features: [
       "Eliminates 99.9% of bacteria",
@@ -137,13 +146,12 @@ export const products: Product[] = [
     tagline: "Luxurious hydration. Botanical purity.",
     description:
       "Infused with organic aloe vera and enriched with natural botanicals, our moisturizing shower gel transforms your daily routine into a spa-like experience. The creamy, pH-balanced formula gently cleanses while delivering deep hydration, leaving skin silky-smooth and delicately fragranced.",
-    sizes: ["250ml", "500ml", "1L", "5L", "20L"],
+    sizes: ["250ml", "500ml", "5L", "20L"],
     sizeImages: {
-      "250ml": [productShower, productShower, productShower],
-      "500ml": [productShower, productShower, productShower],
-      "1L": [productShower, productShower, productShower],
-      "5L": [productShower, productShower, productShower],
-      "20L": [productShower, productShower, productShower],
+      "250ml": [productShower250ml, productShower250ml, productShower250ml],
+      "500ml": [productShower500ml, productShower500ml, productShower500ml],
+      "5L": [productShower5L, productShower5L, productShower5L],
+      "20L": [productShower20L, productShower20L, productShower20L],
     },
     features: [
       "Organic aloe vera infusion",

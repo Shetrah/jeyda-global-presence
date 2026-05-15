@@ -35,40 +35,47 @@ const Contact = () => {
   };
 
   const inputClass =
-    "w-full font-body text-sm bg-background border border-border rounded-md px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors";
+    "w-full font-body text-sm bg-gradient-to-br from-white/60 to-white/40 border-2 border-primary/20 rounded-lg px-4 py-3.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all backdrop-blur-sm";
 
   return (
-    <main className="pt-24">
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
+    <main className="min-h-screen">
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
             {/* Info */}
             <div className="lg:col-span-2">
-              <p className="label-tag mb-3">Contact Us</p>
+              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full">
+                <span className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
+                <p className="label-tag text-foreground">Contact Us</p>
+              </div>
               <h1 className="heading-display text-foreground mb-6">
                 Let's Start
-                <br />a Conversation
+                <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  a Conversation
+                </span>
               </h1>
-              <p className="text-body text-muted-foreground mb-10">
+              <p className="text-body text-muted-foreground mb-10 lg:mb-12">
                 Whether you're an international distributor, retailer, or seeking OEM/ODM services, our global export team is ready to assist.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-6 sm:space-y-8">
                 {[
                   { icon: Mail, label: "Email", value: "215179755@qq.com" },
                   { icon: Phone, label: "Phone", value: "+254729596868 / +254759898222" },
                   { icon: Globe, label: "Markets", value: "50+ Countries Worldwide" },
                   { icon: MapPin, label: "Address", value: "Wuyi Rd, Machakos, Kenya\nP.O. Box: 1234-00100" },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-md bg-secondary flex items-center justify-center shrink-0">
-                      <item.icon size={18} className="text-primary" />
+                  <div key={item.label} className="flex items-start gap-4 group">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center shrink-0 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all">
+                      <item.icon size={20} className="text-primary" />
                     </div>
                     <div>
-                      <p className="font-body text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      <p className="font-body text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">
                         {item.label}
                       </p>
-                      <p className="font-body text-sm text-foreground whitespace-pre-line">{item.value}</p>
+                      <p className="font-body text-base text-foreground font-semibold whitespace-pre-line">{item.value}</p>
                     </div>
                   </div>
                 ))}
@@ -77,8 +84,8 @@ const Contact = () => {
 
             {/* Form */}
             <div className="lg:col-span-3">
-              <form onSubmit={handleSubmit} className="glass-card p-8 md:p-10">
-                <h2 className="font-heading text-2xl font-semibold text-foreground mb-6">
+              <form onSubmit={handleSubmit} className="premium-card p-5 sm:p-8 md:p-10 rounded-xl">
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold leading-tight text-foreground mb-6 sm:mb-8">
                   Export Inquiry Form
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -109,11 +116,11 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Tell us about your requirements..."
                   rows={4}
-                  className={`${inputClass} mb-6 resize-none`}
+                  className={`${inputClass} mb-8 resize-none`}
                 />
                 <button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground font-body text-sm font-semibold py-3 rounded-md hover:opacity-90 transition-opacity"
+                  className="w-full min-h-12 bg-gradient-to-r from-primary to-secondary text-white font-body text-base font-bold py-3.5 rounded-lg hover:shadow-xl hover:shadow-primary/30 transition-all transform hover:scale-[1.01] active:scale-95"
                 >
                   Submit Inquiry
                 </button>

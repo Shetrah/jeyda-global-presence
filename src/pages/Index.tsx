@@ -85,20 +85,20 @@ const Index = () => {
     <main>
       {/* Hero Carousel */}
       <HeroCarousel slides={heroSlides}>
-        <div className="max-w-2xl">
-          <p className="label-tag text-accent mb-4 md:mb-6 animate-fade-up text-center text-base md:text-xl font-semibold">
+        <div className="max-w-2xl py-2">
+          <p className="label-tag text-accent mb-3 md:mb-5 animate-fade-up text-left text-xs sm:text-sm md:text-base font-semibold tracking-[0.12em]">
             Ingenious Daily Chemicals, Cleanliness Easily Achieved
           </p>
-          <h1 className="heading-display text-background mb-6 animate-fade-up-delay-1">
-            <span className="text-3xl md:text-6xl block mb-2">Welcome to</span>
-            <span className="text-background drop-shadow-2xl block text-4xl md:text-7xl font-black text-center" style={{textShadow: '0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.5)'}}>Jeyda Supplies Co., Ltd</span>
-            <span className="text-2xl md:text-6xl mt-3 md:mt-5 block">Thank you for reaching out!</span>
+          <h1 className="text-background mb-5 animate-fade-up-delay-1 font-heading font-semibold leading-tight tracking-normal">
+            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-2">Welcome to</span>
+            <span className="text-background drop-shadow-2xl block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black hero-title-shadow">Jeyda Supplies Co., Ltd</span>
+            <span className="block text-2xl sm:text-3xl md:text-5xl lg:text-6xl mt-3 md:mt-5">Thank you for reaching out!</span>
           </h1>
           <div className="mb-6 md:mb-8 max-w-lg animate-fade-up-delay-2">
             <p className="text-sm md:text-body text-background/80 font-semibold mb-2 md:mb-3">
               We are specialised in:
             </p>
-            <ul className="text-sm md:text-body text-background/80 space-y-1 md:space-y-2 list-disc list-inside">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm md:text-body text-background/85">
               <li>Shower Gel</li>
               <li>HandWash</li>
               <li>DishWash</li>
@@ -108,16 +108,16 @@ const Index = () => {
               <li>Glass Cleaner</li>
             </ul>
           </div>
-          <div className="flex flex-wrap gap-4 animate-fade-up-delay-3">
+          <div className="flex flex-col gap-3 animate-fade-up-delay-3 sm:flex-row sm:flex-wrap">
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
+              className="inline-flex min-h-11 items-center justify-center gap-2 bg-accent text-accent-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
             >
               Explore Products <ArrowRight size={16} />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 border border-background/30 text-background font-body text-sm font-semibold px-6 py-3 rounded-md hover:bg-background/10 transition-colors"
+              className="inline-flex min-h-11 items-center justify-center gap-2 border border-background/30 text-background font-body text-sm font-semibold px-6 py-3 rounded-md hover:bg-background/10 transition-colors"
             >
               Partner With Us
             </Link>
@@ -126,15 +126,20 @@ const Index = () => {
       </HeroCarousel>
 
       {/* Stats */}
-      <section className="bg-primary">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">
-                  {stat.value}
-                </p>
-                <p className="font-body text-sm text-primary-foreground/70 mt-1">
+      <section className="relative py-16 md:py-24 bg-gradient-to-r from-primary/90 via-primary/80 to-secondary/90 overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {stats.map((stat, idx) => (
+              <div key={stat.label} className="text-center fade-in">
+                <div className="inline-block">
+                  <p className="font-heading text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
+                    {stat.value}
+                  </p>
+                </div>
+                <p className="font-body text-sm md:text-base text-white/80 mt-2 font-semibold">
                   {stat.label}
                 </p>
               </div>
@@ -144,11 +149,16 @@ const Index = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
+      <section className="section-padding relative">
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-secondary/5 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <p className="label-tag mb-3">Our Collection</p>
-            <h2 className="heading-section text-foreground mb-4">
+            <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full">
+              <span className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
+              <p className="label-tag text-foreground">Our Collection</p>
+            </div>
+            <h2 className="heading-section text-foreground mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Premium Care Products
             </h2>
             <p className="text-body text-muted-foreground max-w-2xl mx-auto">
@@ -156,38 +166,53 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {products.map((product, idx) => (
+              <div key={product.id} className="fade-in">
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 font-body text-sm font-semibold text-primary hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 font-body text-base font-bold bg-gradient-to-r from-primary to-secondary text-white px-8 py-3.5 rounded-lg hover:shadow-xl hover:shadow-primary/30 transition-all transform hover:scale-105 active:scale-95"
             >
-              View Full Catalog <ArrowRight size={16} />
+              View Full Catalog <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="section-padding bg-secondary/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="label-tag mb-3">Why Jeyda</p>
+      <section className="section-padding relative bg-gradient-to-b from-background to-slate-50">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full">
+              <span className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
+              <p className="label-tag text-foreground">Why Jeyda</p>
+            </div>
             <h2 className="heading-section text-foreground mb-4">
-              Global Excellence, Responsibly Crafted
+              Global Excellence,
+              <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Responsibly Crafted
+              </span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((item) => (
-              <div key={item.title} className="glass-card p-8">
-                <item.icon className="text-accent mb-4" size={28} />
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
+            {values.map((item, idx) => (
+              <div 
+                key={item.title} 
+                className="premium-card p-8 rounded-xl fade-in group"
+              >
+                <div className="relative mb-6">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-10 blur-lg rounded-full transition-opacity"></div>
+                  <item.icon className="relative text-primary group-hover:text-secondary transition-colors" size={32} />
+                </div>
+                <h3 className="font-heading text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                   {item.title}
                 </h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                <p className="font-body text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors">
                   {item.desc}
                 </p>
               </div>
@@ -197,43 +222,50 @@ const Index = () => {
       </section>
 
       {/* Manufacturing */}
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-transparent"></div>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
           <div>
-            <p className="label-tag mb-3">Manufacturing Strength</p>
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full">
+              <span className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
+              <p className="label-tag text-foreground">Manufacturing Strength</p>
+            </div>
             <h2 className="heading-section text-foreground mb-6">
               Advanced Production.
-              <br />
-              Uncompromising Quality.
+              <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Uncompromising Quality.
+              </span>
             </h2>
-            <p className="text-body text-muted-foreground mb-6">
+            <p className="text-body text-muted-foreground mb-8 leading-relaxed">
               Our state-of-the-art manufacturing facility features fully automated production lines, precision dosing systems, and in-house quality control laboratories. Every batch undergoes rigorous testing to meet international standards.
             </p>
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-4 mb-10">
               {[
                 "Automated high-speed bottling & packaging lines",
                 "In-house QC laboratory with advanced analytics",
                 "OEM/ODM services for private label partners",
                 "Bulk production capacity: 500,000+ units/month",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 font-body text-sm text-foreground">
-                  <Shield size={16} className="text-accent mt-0.5 shrink-0" />
-                  {item}
+                <li key={item} className="flex items-start gap-4 font-body text-sm text-foreground group">
+                  <div className="p-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg group-hover:from-primary/30 group-hover:to-secondary/30 transition-all mt-0.5">
+                    <Shield size={18} className="text-primary" />
+                  </div>
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 font-body text-sm font-semibold text-primary hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 font-body text-base font-bold text-white bg-gradient-to-r from-primary to-secondary px-7 py-3.5 rounded-lg hover:shadow-xl hover:shadow-primary/30 transition-all"
             >
-              Learn More <ArrowRight size={16} />
+              Learn More <ArrowRight size={18} />
             </Link>
           </div>
-          <div className="rounded-lg overflow-hidden shadow-xl">
+          <div className="rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all group">
             <img
               src={manufacturingImage}
               alt="Jeyda advanced manufacturing facility"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
           </div>
@@ -241,7 +273,7 @@ const Index = () => {
       </section>
 
       {/* Sustainability */}
-      <section className="relative">
+      <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={sustainabilityImage}
@@ -249,48 +281,56 @@ const Index = () => {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-foreground/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/75 via-foreground/70 to-foreground/75" />
         </div>
         <div className="relative z-10 section-padding">
-          <div className="max-w-7xl mx-auto max-w-2xl text-center mx-auto">
-            <p className="label-tag text-accent mb-3">Sustainability</p>
-            <h2 className="heading-section text-background mb-6">
+          <div className="max-w-2xl text-center mx-auto">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
+              <span className="w-2 h-2 bg-gradient-to-r from-accent to-white rounded-full"></span>
+              <p className="label-tag text-white font-semibold">Sustainability</p>
+            </div>
+            <h2 className="heading-section text-white mb-6 drop-shadow-lg">
               Our Commitment to the Planet
             </h2>
-            <p className="text-body text-background/80 mb-8">
+            <p className="text-body text-white/90 mb-10 leading-relaxed drop-shadow-md">
               From biodegradable formulations to recyclable packaging and solar-powered facilities, sustainability isn't an afterthought — it's the foundation of everything we create. We are committed to reducing our carbon footprint while delivering uncompromising product performance.
             </p>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-accent to-orange-500 text-white font-body text-base font-bold px-8 py-3.5 rounded-lg hover:shadow-xl hover:shadow-accent/40 transition-all transform hover:scale-105 active:scale-95"
             >
-              Our Green Initiatives <Leaf size={16} />
+              Our Green Initiatives <Leaf size={18} />
             </Link>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-secondary/50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="heading-section text-foreground mb-4">
-            Ready to Partner With Jeyda?
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/20"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-primary via-secondary to-primary opacity-10 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="heading-section text-foreground mb-6">
+            Ready to Partner With
+            <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Jeyda?
+            </span>
           </h2>
-          <p className="text-body text-muted-foreground max-w-xl mx-auto mb-8">
-            Whether you're a distributor, retailer, or looking for OEM/ODM solutions, we'd love to explore how we can work together.
+          <p className="text-body text-muted-foreground max-w-2xl mx-auto mb-12 text-lg leading-relaxed">
+            Whether you're a distributor, retailer, or looking for OEM/ODM solutions, we'd love to explore how we can work together to deliver premium products to your markets.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-8 py-3 rounded-md hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white font-body text-base font-bold px-8 py-3.5 rounded-lg hover:shadow-xl hover:shadow-primary/30 transition-all transform hover:scale-105 active:scale-95"
             >
-              Request a Quote <ArrowRight size={16} />
+              Request a Quote <ArrowRight size={18} />
             </Link>
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 border border-border text-foreground font-body text-sm font-semibold px-8 py-3 rounded-md hover:bg-secondary transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-primary text-primary font-body text-base font-bold px-8 py-3.5 rounded-lg hover:bg-primary/5 transition-all group"
             >
-              Browse Products
+              Browse Products <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>

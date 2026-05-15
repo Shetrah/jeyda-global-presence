@@ -31,7 +31,7 @@ export default function HeroCarousel({ slides, children }: HeroCarouselProps) {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-16 sm:py-20 md:py-24">
       {/* Image Container */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
@@ -46,43 +46,47 @@ export default function HeroCarousel({ slides, children }: HeroCarouselProps) {
               alt={slide.alt}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/40 md:from-foreground/80 md:via-foreground/50 to-transparent\" />
+            {/* Enhanced gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/55 md:from-foreground/90 md:via-foreground/60 to-foreground/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-50" />
           </div>
         ))}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-32 w-full">
-        {children}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 w-full">
+        <div className="animate-fade-in">
+          {children}
+        </div>
       </div>
 
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-background/30 hover:bg-background/50 text-background p-3 rounded-full transition-colors"
+        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 sm:flex group"
         aria-label="Previous slide"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
       </button>
 
       <button
         onClick={goToNext}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-background/30 hover:bg-background/50 text-background p-3 rounded-full transition-colors"
+        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 sm:flex group"
         aria-label="Next slide"
       >
-        <ChevronRight size={24} />
+        <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
       </button>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-3 sm:bottom-8">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`rounded-full transition-all duration-300 backdrop-blur-sm ${
               index === currentSlide
-                ? "bg-accent w-8"
-                : "bg-background/50 hover:bg-background/70"
+                ? "bg-gradient-to-r from-primary to-secondary w-8 h-3"
+                : "bg-white/30 hover:bg-white/50 w-3 h-3"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

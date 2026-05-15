@@ -11,7 +11,7 @@ const ProductDetail = () => {
 
   if (!product) {
     return (
-      <main className="pt-24 section-padding">
+      <main className="section-padding">
         <div className="max-w-7xl mx-auto text-center py-20">
           <h1 className="heading-section text-foreground mb-4">Product Not Found</h1>
           <Link to="/products" className="font-body text-sm text-primary hover:underline">
@@ -22,8 +22,11 @@ const ProductDetail = () => {
     );
   }
 
+  const selectedSize = product.sizes[selectedSizeIndex];
+  const selectedImage = product.sizeImages[selectedSize]?.[0] || product.image;
+
   return (
-    <main className="pt-24">
+    <main>
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
           <Link
@@ -33,11 +36,11 @@ const ProductDetail = () => {
             <ArrowLeft size={14} /> Back to Products
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Image Carousel */}
             <VarietyCarousel
-              images={product.sizeImages[product.sizes[selectedSizeIndex]] || [product.image]}
-              altText={`${product.name} - ${product.sizes[selectedSizeIndex]}`}
+              images={[selectedImage]}
+              altText={`${product.name} - ${selectedSize}`}
             />
 
             {/* Info */}
@@ -55,7 +58,7 @@ const ProductDetail = () => {
 
               {/* Important Note */}
               {product.importantNote && (
-                <div className="bg-accent/15 border-l-4 border-accent rounded-r p-6 mb-8">
+                <div className="bg-accent/15 border-l-4 border-accent rounded-r p-5 sm:p-6 mb-8">
                   <p className="font-heading text-base font-black text-accent uppercase tracking-wider mb-3">
                     Important Note:
                   </p>
@@ -67,7 +70,7 @@ const ProductDetail = () => {
 
               {/* Uses */}
               {product.uses && (
-                <div className="bg-accent/15 border-l-4 border-accent rounded-r p-6 mb-8">
+                <div className="bg-accent/15 border-l-4 border-accent rounded-r p-5 sm:p-6 mb-8">
                   <p className="font-heading text-base font-black text-accent uppercase tracking-wider mb-3">
                     Uses:
                   </p>
@@ -91,7 +94,7 @@ const ProductDetail = () => {
                     <button
                       key={s}
                       onClick={() => setSelectedSizeIndex(index)}
-                      className={`font-body text-sm font-medium px-4 py-2 rounded-md transition-all ${
+                      className={`min-h-10 font-body text-sm font-medium px-4 py-2 rounded-md transition-all ${
                         selectedSizeIndex === index
                           ? "bg-accent text-accent-foreground shadow-md"
                           : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -107,16 +110,16 @@ const ProductDetail = () => {
               {/* Removed */}
 
               {/* CTA */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
                 >
                   Request Bulk Quote
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 border border-border text-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:bg-secondary transition-colors"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 border border-border text-foreground font-body text-sm font-semibold px-6 py-3 rounded-md hover:bg-secondary transition-colors"
                 >
                   Become a Distributor
                 </Link>
