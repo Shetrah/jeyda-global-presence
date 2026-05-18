@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 
-const SITE_NAME = "Jeyda Daily Supplies Co. Ltd.";
-const BASE_URL = "https://www.jeydasupplies.com";
+const SITE_NAME = "Jeyda";
+const BASE_URL = "https://www.jeyda.co.ke";
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.jpg`;
 
 interface SEOProps {
@@ -27,7 +27,7 @@ const SEO = ({
   structuredData,
   noIndex = false,
 }: SEOProps) => {
-  const fullTitle = `${title} | ${SITE_NAME}`;
+  const fullTitle = `${SITE_NAME} | ${title}`;
   const canonicalUrl = `${BASE_URL}${path}`;
 
   const schemas = structuredData

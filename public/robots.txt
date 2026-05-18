@@ -1,5 +1,5 @@
-# Jeyda Daily Supplies Co. Ltd.
-# https://www.jeydasupplies.com
+# Jeyda
+# https://www.jeyda.co.ke
 
 User-agent: *
 Allow: /
@@ -27,4 +27,4 @@ User-agent: LinkedInBot
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.jeydasupplies.com/sitemap.xml
+Sitemap: https://www.jeyda.co.ke/sitemap.xml
