@@ -12,10 +12,30 @@ import {
 } from "lucide-react";
 import manufacturingImage from "@/assets/manufacturing.jpg";
 import sustainabilityImage from "@/assets/sustainability.jpg";
+import SEO from "@/components/SEO";
 
 const About = () => {
   return (
     <main className="min-h-screen">
+      <SEO
+        title="About Us — ISO Certified Global Manufacturer"
+        description="Learn about Jeyda Daily Supplies Co. Ltd. — an ISO 9001 certified manufacturer of eco-friendly home and personal care products, serving 50+ countries with OEM/ODM services since 2013."
+        path="/about"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "About Jeyda Daily Supplies Co. Ltd.",
+          "description": "Jeyda is an ISO 9001 certified, eco-conscious manufacturer of premium laundry, dish, handwash, and shower gel products serving 50+ countries worldwide.",
+          "url": "https://www.jeydasupplies.com/about",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "Jeyda Daily Supplies Co. Ltd.",
+            "foundingDate": "2013",
+            "areaServed": "Worldwide",
+            "certification": "ISO 9001, GMP"
+          }
+        }}
+      />
       {/* Hero */}
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-transparent"></div>

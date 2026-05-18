@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import RainDroplets from "./RainDroplets";
 
 interface CarouselSlide {
   image: string;
@@ -52,6 +53,9 @@ export default function HeroCarousel({ slides, children }: HeroCarouselProps) {
           </div>
         ))}
       </div>
+
+      {/* Animated Rain Droplets — sits above images, below text */}
+      <RainDroplets />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 w-full">

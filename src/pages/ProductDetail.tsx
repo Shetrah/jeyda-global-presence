@@ -3,6 +3,7 @@ import { ArrowLeft, Leaf, Shield, Beaker } from "lucide-react";
 import { useState } from "react";
 import { products, categoryLabels } from "@/data/products";
 import VarietyCarousel from "@/components/VarietyCarousel";
+import SEO from "@/components/SEO";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -12,6 +13,12 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <main className="section-padding">
+        <SEO
+          title="Product Not Found"
+          description="The product you are looking for does not exist."
+          path="/products"
+          noIndex
+        />
         <div className="max-w-7xl mx-auto text-center py-20">
           <h1 className="heading-section text-foreground mb-4">Product Not Found</h1>
           <Link to="/products" className="font-body text-sm text-primary hover:underline">
@@ -27,6 +34,25 @@ const ProductDetail = () => {
 
   return (
     <main>
+      <SEO
+        title={`${product.name} — ${product.tagline}`}
+        description={product.description.slice(0, 155) + "..."}
+        path={`/products/${product.id}`}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": product.name,
+          "description": product.description,
+          "brand": { "@type": "Brand", "name": "Jeyda Daily Supplies Co. Ltd." },
+          "category": categoryLabels[product.category],
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "seller": { "@type": "Organization", "name": "Jeyda Daily Supplies Co. Ltd." }
+          }
+        }}
+      />
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
           <Link

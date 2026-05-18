@@ -15,6 +15,8 @@ import heroProductsImage from "@/assets/hero-products.jpg";
 import sustainabilityMainImage from "@/assets/sustainability.jpg";
 import ProductCard from "@/components/ProductCard";
 import HeroCarousel from "@/components/HeroCarousel";
+import RainDroplets from "@/components/RainDroplets";
+import SEO from "@/components/SEO";
 import { products } from "@/data/products";
 
 const stats = [
@@ -58,31 +60,54 @@ const values = [
 ];
 
 const heroSlides = [
+  { image: heroImage,              alt: "Jeyda premium home care products lineup" },
+  { image: manufacturingImage,     alt: "Jeyda manufacturing facility" },
+  { image: sustainabilityImage,    alt: "Sustainable eco-friendly manufacturing" },
+  { image: heroProductsImage,      alt: "Jeyda premium care products" },
+  { image: sustainabilityMainImage,alt: "Jeyda sustainability commitment" },
+];
+
+const homeStructuredData = [
   {
-    image: heroImage,
-    alt: "Jeyda premium home care products lineup",
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Jeyda Daily Supplies Co. Ltd.",
+    "url": "https://www.jeydasupplies.com",
+    "logo": "https://www.jeydasupplies.com/favicon.png",
+    "description": "Premium manufacturer and global exporter of eco-friendly home and personal care products.",
+    "areaServed": "Worldwide",
+    "numberOfEmployees": "100+",
+    "foundingDate": "2013",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Sales",
+      "availableLanguage": ["English", "Chinese"]
+    }
   },
   {
-    image: manufacturingImage,
-    alt: "Jeyda manufacturing facility",
-  },
-  {
-    image: sustainabilityImage,
-    alt: "Sustainable eco-friendly manufacturing",
-  },
-  {
-    image: heroProductsImage,
-    alt: "Jeyda premium care products",
-  },
-  {
-    image: sustainabilityMainImage,
-    alt: "Jeyda sustainability commitment",
-  },
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Jeyda Care Product Range",
+    "description": "Premium eco-friendly cleaning and personal care products by Jeyda Daily Supplies.",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Multi-Effect Laundry Detergent", "url": "https://www.jeydasupplies.com/products/multi-effect-laundry-detergent" },
+      { "@type": "ListItem", "position": 2, "name": "Utensil Cleanser Essence", "url": "https://www.jeydasupplies.com/products/Dish%20Wash" },
+      { "@type": "ListItem", "position": 3, "name": "Antibacterial Handwash Liquid", "url": "https://www.jeydasupplies.com/products/antibacterial-handwash" },
+      { "@type": "ListItem", "position": 4, "name": "Aloe Moisturizing Shower Gel", "url": "https://www.jeydasupplies.com/products/aloe-moisturizing-shower-gel" }
+    ]
+  }
 ];
 
 const Index = () => {
   return (
     <main>
+      {/* SEO */}
+      <SEO
+        title="Premium Eco-Friendly Care Products"
+        description="Jeyda Daily Supplies Co. Ltd. is a premium manufacturer and global exporter of eco-friendly laundry detergent, dish cleanser, antibacterial handwash, and shower gel. ISO 9001 certified. OEM/ODM available. Serving 50+ countries."
+        path="/"
+        structuredData={homeStructuredData}
+      />
       {/* Hero Carousel */}
       <HeroCarousel slides={heroSlides}>
         <div className="max-w-2xl py-2">
@@ -90,9 +115,19 @@ const Index = () => {
             Ingenious Daily Chemicals, Cleanliness Easily Achieved
           </p>
           <h1 className="text-background mb-5 animate-fade-up-delay-1 font-heading font-semibold leading-tight tracking-normal hero-copy-glow">
-            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-2 text-white/95">Welcome to</span>
-            <span className="text-rainbow-premium drop-shadow-2xl block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black hero-title-shadow">Jeyda Supplies Co., Ltd</span>
-            <span className="block text-2xl sm:text-3xl md:text-5xl lg:text-6xl mt-3 md:mt-5 text-white/90">Thank you for reaching out!</span>
+            <span
+              className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-2 text-white/90 tracking-wide"
+              style={{ letterSpacing: "0.04em", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
+            >
+              Welcome to
+            </span>
+            {/* DEW BEVEL TITLE */}
+            <span className="hero-title-dew drop-shadow-2xl block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">
+              Jeyda Supplies Co., Ltd
+            </span>
+            <span className="block text-2xl sm:text-3xl md:text-5xl lg:text-6xl mt-3 md:mt-5 text-white/90">
+              Thank you for reaching out!
+            </span>
           </h1>
           <div className="mb-6 md:mb-8 max-w-lg animate-fade-up-delay-2 rounded-xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm">
             <p className="text-sm md:text-body text-white font-semibold mb-2 md:mb-3">
@@ -127,15 +162,18 @@ const Index = () => {
 
       {/* Stats */}
       <section className="relative py-16 md:py-24 bg-gradient-to-r from-primary/95 via-accent/80 to-secondary/95 overflow-hidden">
+        {/* Droplets in stats bar too */}
+        <RainDroplets className="opacity-30" />
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent"></div>
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {stats.map((stat, idx) => (
+            {stats.map((stat) => (
               <div key={stat.label} className="text-center fade-in">
                 <div className="inline-block">
-                  <p className="font-heading text-4xl md:text-5xl font-bold text-rainbow-premium drop-shadow-lg">
+                  {/* DEW STAT NUMBERS */}
+                  <p className="stat-dew font-heading text-4xl md:text-5xl font-bold">
                     {stat.value}
                   </p>
                 </div>
@@ -158,7 +196,8 @@ const Index = () => {
               <span className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
               <p className="label-tag text-brand-blend">Our Collection</p>
             </div>
-            <h2 className="heading-section mb-4 text-brand-blend section-title-glow">
+            {/* DEW-BEVEL SECTION HEADING */}
+            <h2 className="section-dew-heading heading-section mb-4">
               Premium Care Products
             </h2>
             <p className="text-body text-muted-foreground max-w-2xl mx-auto">
@@ -166,7 +205,7 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product, idx) => (
+            {products.map((product) => (
               <div key={product.id} className="fade-in">
                 <ProductCard product={product} />
               </div>
@@ -192,17 +231,16 @@ const Index = () => {
               <span className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
               <p className="label-tag text-brand-blend">Why Jeyda</p>
             </div>
-            <h2 className="heading-section text-foreground mb-4 section-title-glow">
-              Global Excellence,
-              <span className="block text-brand-blend">
-                Responsibly Crafted
-              </span>
+            {/* DEW-BEVEL SECTION HEADING */}
+            <h2 className="section-dew-heading heading-section mb-4">
+              Global Excellence,{" "}
+              <span className="block">Responsibly Crafted</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((item, idx) => (
-              <div 
-                key={item.title} 
+            {values.map((item) => (
+              <div
+                key={item.title}
                 className="premium-card p-8 rounded-xl fade-in group"
               >
                 <div className="relative mb-6">
@@ -230,11 +268,10 @@ const Index = () => {
               <span className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
               <p className="label-tag text-brand-blend">Manufacturing Strength</p>
             </div>
-            <h2 className="heading-section text-foreground mb-6 section-title-glow">
-              Advanced Production.
-              <span className="block text-brand-blend">
-                Uncompromising Quality.
-              </span>
+            {/* DEW-BEVEL SECTION HEADING */}
+            <h2 className="section-dew-heading heading-section mb-6">
+              Advanced Production.{" "}
+              <span className="block">Uncompromising Quality.</span>
             </h2>
             <p className="text-body text-muted-foreground mb-8 leading-relaxed">
               Our state-of-the-art manufacturing facility features fully automated production lines, precision dosing systems, and in-house quality control laboratories. Every batch undergoes rigorous testing to meet international standards.
@@ -250,7 +287,9 @@ const Index = () => {
                   <div className="p-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg group-hover:from-primary/30 group-hover:to-secondary/30 transition-all mt-0.5">
                     <Shield size={18} className="text-primary" />
                   </div>
-                  <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">{item}</span>
+                  <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -283,13 +322,16 @@ const Index = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/75 via-foreground/70 to-foreground/75" />
         </div>
+        {/* Droplets over the sustainability section */}
+        <RainDroplets className="opacity-40" />
         <div className="relative z-10 section-padding">
           <div className="max-w-2xl text-center mx-auto">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
               <span className="w-2 h-2 bg-gradient-to-r from-accent to-white rounded-full"></span>
               <p className="label-tag text-rainbow-premium font-semibold">Sustainability</p>
             </div>
-            <h2 className="heading-section text-rainbow-premium mb-6 drop-shadow-lg">
+            {/* DEW-BEVEL on dark background */}
+            <h2 className="hero-title-dew heading-section mb-6 drop-shadow-lg">
               Our Commitment to the Planet
             </h2>
             <p className="text-body text-white/90 mb-10 leading-relaxed drop-shadow-md">
@@ -310,11 +352,10 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/20"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-primary via-secondary to-primary opacity-10 rounded-full mix-blend-multiply filter blur-3xl"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="heading-section text-foreground mb-6 section-title-glow">
-            Ready to Partner With
-            <span className="block text-brand-blend">
-              Jeyda?
-            </span>
+          {/* DEW-BEVEL SECTION HEADING */}
+          <h2 className="section-dew-heading heading-section mb-6">
+            Ready to Partner With{" "}
+            <span className="block">Jeyda?</span>
           </h2>
           <p className="text-body text-muted-foreground max-w-2xl mx-auto mb-12 text-lg leading-relaxed">
             Whether you're a distributor, retailer, or looking for OEM/ODM solutions, we'd love to explore how we can work together to deliver premium products to your markets.

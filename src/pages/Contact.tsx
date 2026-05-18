@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mail, Phone, Globe, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import SEO from "@/components/SEO";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -39,6 +40,30 @@ const Contact = () => {
 
   return (
     <main className="min-h-screen">
+      <SEO
+        title="Contact Us — Export Inquiries & OEM Partnerships"
+        description="Get in touch with Jeyda Daily Supplies Co. Ltd. for bulk export inquiries, OEM/ODM private label services, and distribution partnerships. Serving 50+ countries worldwide."
+        path="/contact"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact Jeyda Daily Supplies",
+          "url": "https://www.jeydasupplies.com/contact",
+          "description": "Reach out to Jeyda for export inquiries, OEM services, and distribution partnerships.",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "Jeyda Daily Supplies Co. Ltd.",
+            "email": "215179755@qq.com",
+            "telephone": "+254729596868",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Wuyi Rd",
+              "addressLocality": "Machakos",
+              "addressCountry": "KE"
+            }
+          }
+        }}
+      />
       <section className="section-padding relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>

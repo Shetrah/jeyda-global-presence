@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard";
+import SEO from "@/components/SEO";
 import {
   products,
   categoryLabels,
@@ -43,6 +44,18 @@ const Products = () => {
 
   return (
     <main className="min-h-screen">
+      <SEO
+        title="Product Catalog — Laundry, Dish, Handwash & Shower Gel"
+        description="Browse Jeyda's full range of eco-friendly care products: Multi-Effect Laundry Detergent, Utensil Cleanser, Antibacterial Handwash, and Aloe Moisturizing Shower Gel. Available in multiple sizes for domestic and commercial use."
+        path="/products"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Jeyda Product Catalog",
+          "description": "Full range of eco-friendly home and personal care products by Jeyda Daily Supplies Co. Ltd.",
+          "url": "https://www.jeydasupplies.com/products"
+        }}
+      />
       {/* Header */}
       <section className="section-padding pb-8 bg-gradient-to-b from-primary/5 to-transparent">
         <div className="max-w-7xl mx-auto">
